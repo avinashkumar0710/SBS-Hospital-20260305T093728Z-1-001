@@ -1,0 +1,78 @@
+{
+  "meta": {
+    "schemaVersion": 2,
+    "updatedAt": "2026-03-06T10:40:45.252Z"
+  },
+  "tables": {
+    "appointments": {
+      "columns": [
+        "id",
+        "createdAt",
+        "updatedAt",
+        "name",
+        "phone",
+        "email",
+        "dept",
+        "date",
+        "message",
+        "status",
+        "adminNotes"
+      ],
+      "nextId": 5,
+      "rows": [
+        {
+          "id": 1,
+          "createdAt": "2026-03-06T10:01:03.574Z",
+          "updatedAt": "2026-03-06T10:01:03.574Z",
+          "name": "Phone Test",
+          "phone": "9123456789",
+          "email": "",
+          "dept": "general",
+          "date": "2099-12-31",
+          "message": "phone format test",
+          "status": "scheduled",
+          "adminNotes": ""
+        },
+        {
+          "id": 2,
+          "createdAt": "2026-03-06T10:01:12.235Z",
+          "updatedAt": "2026-03-06T10:27:50.721Z",
+          "name": "Phone Test2",
+          "phone": "9123456789",
+          "email": "",
+          "dept": "general",
+          "date": "2099-12-31",
+          "message": "phone format test",
+          "status": "completed",
+          "adminNotes": "Checked from admin dashboard test."
+        },
+        {
+          "id": 3,
+          "createdAt": "2026-03-06T10:04:56.814Z",
+          "updatedAt": "2026-03-06T10:30:13.519Z",
+          "name": "madhu",
+          "phone": "9340438183",
+          "email": "nirmit.sawarkar@gmail.com",
+          "dept": "gynae",
+          "date": "2026-03-22",
+          "message": "",
+          "status": "cancelled",
+          "adminNotes": ""
+        },
+        {
+          "id": 4,
+          "createdAt": "2026-03-06T10:40:05.923Z",
+          "updatedAt": "2026-03-06T10:40:45.252Z",
+          "name": "IT NSPCL",
+          "phone": "9437047227",
+          "email": "itnspcl@gmail.com",
+          "dept": "neuro",
+          "date": "2026-03-21",
+          "message": "",
+          "status": "scheduled",
+          "adminNotes": "appointment for ortho"
+        }
+      ]
+    }
+  }
+}

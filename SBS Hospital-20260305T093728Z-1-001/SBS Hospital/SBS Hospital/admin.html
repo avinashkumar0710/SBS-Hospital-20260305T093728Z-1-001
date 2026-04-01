@@ -1,0 +1,139 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; script-src 'self';">
+    <title>Appointments Admin | SBS Hospital</title>
+    <meta name="description" content="Protected appointments dashboard for SBS Hospital staff." />
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="admin-dashboard-page">
+    <section class="page-hero admin-hero" aria-label="Admin page header">
+        <div class="container admin-hero-grid">
+            <div>
+                <span class="eyebrow admin-eyebrow">Internal Dashboard</span>
+                <h1>Appointments Dashboard</h1>
+                <p>Review upcoming visits, mark completed cases, and track patients who did not arrive for their scheduled appointment.</p>
+            </div>
+            <div class="admin-session-card">
+                <span class="admin-session-label">Signed in as</span>
+                <strong id="adminUser">Admin</strong>
+                <span id="adminStatus">Loading appointments...</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="section admin-shell">
+        <div class="container">
+            <div class="admin-metrics" aria-label="Appointments summary">
+                <article class="admin-metric-card">
+                    <span>Total</span>
+                    <strong id="metricTotal">0</strong>
+                    <p>All stored appointments</p>
+                </article>
+                <article class="admin-metric-card">
+                    <span>Scheduled</span>
+                    <strong id="metricScheduled">0</strong>
+                    <p>Waiting for visit date</p>
+                </article>
+                <article class="admin-metric-card">
+                    <span>Completed</span>
+                    <strong id="metricCompleted">0</strong>
+                    <p>Patients attended successfully</p>
+                </article>
+                <article class="admin-metric-card">
+                    <span>No-show</span>
+                    <strong id="metricNoShow">0</strong>
+                    <p>Patients who did not come</p>
+                </article>
+            </div>
+
+            <div class="admin-panel">
+                <div class="admin-toolbar">
+                    <div class="admin-search-wrap">
+                        <label class="admin-label" for="adminSearch">Search appointments</label>
+                        <input id="adminSearch" class="admin-search-input" type="search" placeholder="Search by patient, phone, department, date, or notes" />
+                    </div>
+                    <div class="admin-toolbar-actions">
+                        <button id="adminRefresh" class="btn btn-outline-primary btn-sm" type="button">Refresh</button>
+                        <button id="adminLogout" class="btn btn-primary btn-sm" type="button">Logout</button>
+                    </div>
+                </div>
+
+                <div class="admin-filters" role="tablist" aria-label="Filter appointments by status">
+                    <button class="admin-filter-chip active" type="button" data-filter="all">All</button>
+                    <button class="admin-filter-chip" type="button" data-filter="scheduled">Scheduled</button>
+                    <button class="admin-filter-chip" type="button" data-filter="completed">Completed</button>
+                    <button class="admin-filter-chip" type="button" data-filter="no_show">No-show</button>
+                    <button class="admin-filter-chip" type="button" data-filter="cancelled">Cancelled</button>
+                </div>
+
+                <div class="admin-table-wrap" aria-live="polite">
+                    <table class="admin-table" aria-label="Appointments table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Patient</th>
+                                <th>Contact</th>
+                                <th>Department</th>
+                                <th>Appointment</th>
+                                <th>Submitted</th>
+                                <th>Status</th>
+                                <th>Follow-up</th>
+                            </tr>
+                        </thead>
+                        <tbody id="appointmentsBody"></tbody>
+                    </table>
+                    <div id="adminEmpty" class="admin-empty hidden">No appointments match the current filter.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer role="contentinfo">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="nav-logo" style="margin-bottom:1rem">
+                        <div class="nav-logo-icon">SBS</div>
+                        <div class="nav-logo-text"><span class="logo-main">SBS Hospital</span><span class="logo-sub">Shri Bira Singh Multispeciality</span></div>
+                    </div>
+                    <p>Providing compassionate multispeciality healthcare to Bhilai since 2021. MSME: UDYAM-CG-05-0018294</p>
+                </div>
+                <div class="footer-col">
+                    <h5>Quick Links</h5>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Contact</h5>
+                    <div class="footer-contact-item"><span class="fi">Address:</span><span>G.E. Road, Camp 2, Bhilai, CG 490023</span></div>
+                    <div class="footer-contact-item"><span class="fi">OPD:</span><span>Mon-Sat, 9AM-6PM</span></div>
+                    <div class="footer-contact-item"><span class="fi">Phone:</span><a href="tel:7000925884">7000925884</a></div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© <span data-current-year></span> SBS Hospital (Shri Bira Singh Multispeciality Hospital Pvt. Ltd.) · All Rights Reserved</p>
+                <p>UDYAM-CG-05-0018294 · Bhilai, Chhattisgarh</p>
+            </div>
+        </div>
+    </footer>
+
+    <button id="scrollTop" aria-label="Scroll to top">↑</button>
+    <script src="js/main.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+</html>
+
